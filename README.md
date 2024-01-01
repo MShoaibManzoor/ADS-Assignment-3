@@ -1,1 +1,3 @@
-"# ADS-Assignment-3" 
+Clusterig and fitting task.
+
+Selecting a dataset and a topic for analyses.
