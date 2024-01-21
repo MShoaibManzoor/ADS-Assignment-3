@@ -56,10 +56,10 @@ ax.scatter(
     vmin=-1,
     vmax=3
 )
-ax.title('Level of water stress Vs. Precipitation', fontsize=16)
-ax.xlabel('Level of water stress', fontsize=14)
-ax.ylabel('Precipitation', fontsize=14)
-ax.xlim(-10, 200)
+plt.title('Level of water stress Vs. Precipitation', fontsize=16)
+plt.xlabel('Level of water stress', fontsize=14)
+plt.ylabel('Precipitation', fontsize=14)
+plt.xlim(-10, 200)
 
 # Creating a subset of values narrowed down from cluster analysis.
 subset = top_level_df[(top_level_df['ER.H2O.FWST.ZS'] > 75)
