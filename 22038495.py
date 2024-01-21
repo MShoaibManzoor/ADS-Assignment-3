@@ -8,6 +8,18 @@ from scipy.optimize import curve_fit
 
 """@author: Muhammad Shoaib Manzoor 22038495"""
 
+
+def quad_func(x, a, b, c):
+    """Quadratic function to create curve fit.
+    Takes x value for prediction with the three parameters."""
+    return a * x**2 + b * x + c
+
+
+def subset_creator(df, column1, column2):
+    """Used to create subsets for clustering."""
+    return df[[column1, column2]]
+
+
 # Initializing dataset and scaler for use.
 scaler = StandardScaler()
 dataframe = pd.read_excel('./WaterResources.xlsx')
@@ -31,7 +43,8 @@ top_level_df.drop(['AG.LND.IRIG.AG.ZS', 'SH.STA.HYGN.ZS'],
 top_level_df.dropna(inplace=True)
 
 # Creating a subset of Precipitation & Water Stress Level
-stressXprecip = top_level_df[['AG.LND.PRCP.MM', 'ER.H2O.FWST.ZS']]
+stressXprecip = subset_creator(top_level_df,
+                               'AG.LND.PRCP.MM', 'ER.H2O.FWST.ZS')
 
 # Scaling selected features for clustering.
 feats_scaled = scaler.fit_transform(stressXprecip)
@@ -102,10 +115,6 @@ pak_sub_co2e = co2_emissions.loc['PAK']
 # Designing a curve fit model to curve_fit.
 
 # Using quadratic ploynomial for generating curve.
-
-
-def quad_func(x, a, b, c):
-    return a * x**2 + b * x + c
 
 
 years = water_stress.columns
